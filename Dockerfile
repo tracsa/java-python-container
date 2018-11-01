@@ -1,9 +1,12 @@
 FROM python:3.5.6-slim-stretch
 
-RUN apt update
-RUN apt install -y \
+RUN add-apt-repository ppa:webupd8team/java && \
+    apt-get update && \
+    apt-get install -y \
     python3-dev \
-    default-jdk
+    orcale-java8-installer
+
+RUN apt-get install oracle-java8-set-default
 
 RUN pip3 install --upgrade pip
 RUN pip3 install pipenv
